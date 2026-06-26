@@ -1,0 +1,21 @@
+product_id,product_name,brand,category,sub_category,unit_price,pack_size_ml
+P001,AquaFlow Carbonated 1,AquaFlow,Carbonated,Carbonated - Premium,2.46,500
+P002,FizzyPop Carbonated 2,FizzyPop,Carbonated,Carbonated - Premium,4.09,330
+P003,BrewMaster Carbonated 3,BrewMaster,Carbonated,Carbonated - Diet,1.83,500
+P004,AquaFlow Juice 4,AquaFlow,Juice,Juice - Premium,3.77,1500
+P005,FizzyPop Energy 5,FizzyPop,Energy,Energy - Premium,2.47,330
+P006,FizzyPop Energy 6,FizzyPop,Energy,Energy - Regular,2.47,500
+P007,NatureNectar Carbonated 7,NatureNectar,Carbonated,Carbonated - Diet,2.83,1000
+P008,NatureNectar Water 8,NatureNectar,Water,Water - Diet,4.05,330
+P009,BrewMaster Carbonated 9,BrewMaster,Carbonated,Carbonated - Premium,2.53,1000
+P010,FizzyPop Carbonated 10,FizzyPop,Carbonated,Carbonated - Diet,3.81,1000
+P011,AquaFlow Juice 11,AquaFlow,Juice,Juice - Diet,2.83,1500
+P012,NatureNectar Juice 12,NatureNectar,Juice,Juice - Regular,2.74,1000
+P013,AquaFlow Juice 13,AquaFlow,Juice,Juice - Premium,4.05,500
+P014,BrewMaster Energy 14,BrewMaster,Energy,Energy - Regular,4.96,500
+P015,NatureNectar Carbonated 15,NatureNectar,Carbonated,Carbonated - Diet,4.38,1000
+P016,BrewMaster Water 16,BrewMaster,Water,Water - Diet,2.24,1000
+P017,FizzyPop Energy 17,FizzyPop,Energy,Energy - Regular,4.6,1500
+P018,FizzyPop Water 18,FizzyPop,Water,Water - Diet,2.36,1000
+P019,BrewMaster Energy 19,BrewMaster,Energy,Energy - Regular,2.27,500
+P020,BrewMaster Carbonated 20,BrewMaster,Carbonated,Carbonated - Diet,4.51,500

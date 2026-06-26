@@ -1,0 +1,21 @@
+product_id,product_name,brand,category,sub_category,pack_size_ml,unit_price
+BEV-001,Product 1,EnergyX,Energy,Milk,1000,3.93
+BEV-002,Product 2,FizzCo,Dairy,Fruit,1000,1.4
+BEV-003,Product 3,EnergyX,Dairy,Sports,1000,1.08
+BEV-004,Product 4,PureSip,Energy,Fruit,250,3.47
+BEV-005,Product 5,PureSip,Dairy,Sports,250,2.16
+BEV-006,Product 6,EnergyX,Juice,Sports,1000,2.82
+BEV-007,Product 7,EnergyX,Water,Sports,1000,4.93
+BEV-008,Product 8,FizzCo,Water,Milk,1000,3.72
+BEV-009,Product 9,FizzCo,Juice,Sports,250,4.86
+BEV-010,Product 10,PureSip,Juice,Sparkling,500,1.39
+BEV-011,Product 11,FreshFarm,Energy,Sports,1000,3.44
+BEV-012,Product 12,FreshFarm,Water,Sparkling,500,3.65
+BEV-013,Product 13,PureSip,Juice,Sports,500,1.13
+BEV-014,Product 14,PureSip,Juice,Sports,500,2.58
+BEV-015,Product 15,FreshFarm,Energy,Sparkling,500,2.3
+BEV-016,Product 16,FreshFarm,Dairy,Fruit,1000,4.31
+BEV-017,Product 17,PureSip,Carbonated,Sports,250,1.56
+BEV-018,Product 18,EnergyX,Dairy,Sparkling,250,4.95
+BEV-019,Product 19,FreshFarm,Carbonated,Sports,1000,4.26
+BEV-020,Product 20,FizzCo,Water,Still,250,3.42

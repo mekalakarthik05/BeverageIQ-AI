@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#0B1020" rx="15" />
+  
+  <text x="400" y="50" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="bold" fill="#F8FAFC" text-anchor="middle">Database Schema</text>
+
+  <!-- Tables -->
+  <g transform="translate(100, 100)">
+    <rect width="200" height="150" rx="8" fill="#161B2F" stroke="#8B5CF6" stroke-width="2"/>
+    <rect width="200" height="40" rx="8" fill="#8B5CF6" stroke="#8B5CF6" stroke-width="2"/>
+    <text x="100" y="25" font-family="Helvetica" font-size="16" font-weight="bold" fill="#F8FAFC" text-anchor="middle">Stores</text>
+    
+    <text x="15" y="70" font-family="monospace" font-size="12" fill="#2DD4BF">PK store_id (INT)</text>
+    <text x="15" y="90" font-family="monospace" font-size="12" fill="#94A3B8">region (TEXT)</text>
+    <text x="15" y="110" font-family="monospace" font-size="12" fill="#94A3B8">store_type (TEXT)</text>
+    <text x="15" y="130" font-family="monospace" font-size="12" fill="#94A3B8">store_size (INT)</text>
+  </g>
+
+  <g transform="translate(500, 100)">
+    <rect width="200" height="150" rx="8" fill="#161B2F" stroke="#2DD4BF" stroke-width="2"/>
+    <rect width="200" height="40" rx="8" fill="#2DD4BF" stroke="#2DD4BF" stroke-width="2"/>
+    <text x="100" y="25" font-family="Helvetica" font-size="16" font-weight="bold" fill="#0B1020" text-anchor="middle">Products</text>
+    
+    <text x="15" y="70" font-family="monospace" font-size="12" fill="#8B5CF6">PK product_id (INT)</text>
+    <text x="15" y="90" font-family="monospace" font-size="12" fill="#94A3B8">product_name (TEXT)</text>
+    <text x="15" y="110" font-family="monospace" font-size="12" fill="#94A3B8">category (TEXT)</text>
+    <text x="15" y="130" font-family="monospace" font-size="12" fill="#94A3B8">brand (TEXT)</text>
+  </g>
+
+  <g transform="translate(100, 350)">
+    <rect width="200" height="200" rx="8" fill="#161B2F" stroke="#F43F5E" stroke-width="2"/>
+    <rect width="200" height="40" rx="8" fill="#F43F5E" stroke="#F43F5E" stroke-width="2"/>
+    <text x="100" y="25" font-family="Helvetica" font-size="16" font-weight="bold" fill="#F8FAFC" text-anchor="middle">Sales</text>
+    
+    <text x="15" y="70" font-family="monospace" font-size="12" fill="#F8FAFC">PK sale_id (INT)</text>
+    <text x="15" y="90" font-family="monospace" font-size="12" fill="#8B5CF6">FK product_id (INT)</text>
+    <text x="15" y="110" font-family="monospace" font-size="12" fill="#2DD4BF">FK store_id (INT)</text>
+    <text x="15" y="130" font-family="monospace" font-size="12" fill="#94A3B8">date (DATE)</text>
+    <text x="15" y="150" font-family="monospace" font-size="12" fill="#94A3B8">units_sold (INT)</text>
+    <text x="15" y="170" font-family="monospace" font-size="12" fill="#94A3B8">revenue (REAL)</text>
+  </g>
+
+  <g transform="translate(500, 350)">
+    <rect width="200" height="200" rx="8" fill="#161B2F" stroke="#EAB308" stroke-width="2"/>
+    <rect width="200" height="40" rx="8" fill="#EAB308" stroke="#EAB308" stroke-width="2"/>
+    <text x="100" y="25" font-family="Helvetica" font-size="16" font-weight="bold" fill="#0B1020" text-anchor="middle">Inventory</text>
+    
+    <text x="15" y="70" font-family="monospace" font-size="12" fill="#F8FAFC">PK log_id (INT)</text>
+    <text x="15" y="90" font-family="monospace" font-size="12" fill="#8B5CF6">FK product_id (INT)</text>
+    <text x="15" y="110" font-family="monospace" font-size="12" fill="#2DD4BF">FK store_id (INT)</text>
+    <text x="15" y="130" font-family="monospace" font-size="12" fill="#94A3B8">date (DATE)</text>
+    <text x="15" y="150" font-family="monospace" font-size="12" fill="#94A3B8">stock_level (INT)</text>
+    <text x="15" y="170" font-family="monospace" font-size="12" fill="#94A3B8">stockout_flag (INT)</text>
+  </g>
+
+  <!-- Lines -->
+  <path d="M 200 250 L 200 350" stroke="#2DD4BF" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+  <path d="M 600 250 L 600 350" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+  <path d="M 300 175 L 500 450" stroke="#2DD4BF" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+  <path d="M 500 175 L 300 450" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+
+</svg>

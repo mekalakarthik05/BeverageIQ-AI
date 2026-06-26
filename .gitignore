@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+venv/
+env/
+.env
+.venv
+ENV/
+
+# Streamlit & Cache
+.streamlit/credentials.toml
+.pytest_cache/
+.mypy_cache/
+.cache/
+*.pyc
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Generated Reports & PDFs (ReportLab)
+*.pdf
+generated_reports/
+tmp/
+temp/
+
+# Application Specific Database (Uncomment if DB shouldn't be tracked)
+# *.db
+# *.sqlite3
+# beverage_iq.db
+
+# Dumps and temporary files
+*.bak
+*.tmp
+*.temp
+
+# Plotly / Kaleido temp files
+*kaleido*

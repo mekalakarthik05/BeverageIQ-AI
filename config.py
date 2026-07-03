@@ -7,8 +7,10 @@ DATA_DIR = BASE_DIR / "data"
 DATABASE_PATH = BASE_DIR / "data" / "database.db"
 
 # Model Configuration
-OLLAMA_MODEL = "llama3.2:3b"
-OLLAMA_API_URL = "http://localhost:11434"
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama").lower()
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2:3b")
+OLLAMA_API_URL = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 # Dataset Generation Settings
 NUM_PRODUCTS = 20

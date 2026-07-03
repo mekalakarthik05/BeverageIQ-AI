@@ -63,7 +63,7 @@ BeverageIQ operates on a strict linear pipeline ensuring that Large Language Mod
 - **Frontend**: Streamlit, Custom CSS
 - **Backend**: Python 3, Pandas, SQLite3
 - **Visualization**: Plotly, Kaleido (Static Image Export)
-- **AI/LLM**: Ollama (Llama 3.2:3b), `requests`
+- **AI/LLM**: Ollama (Llama 3.2:3b), Google Gemini API
 - **Export Engine**: ReportLab (Vector PDF Generation)
 
 ---
@@ -114,11 +114,26 @@ BeverageIQ/
 - Python 3.10+
 - [Ollama](https://ollama.com/) installed locally.
 
-### 2. Setup Ollama
+### 2. Configure AI Engine
+
+BeverageIQ features a robust LLM abstraction layer with automatic failovers. You can use either **Ollama** (local, private) or **Google Gemini** (cloud, high-performance).
+
+**Environment Variables** (Optional, set via `.env` or system variables):
+```bash
+LLM_PROVIDER="ollama"      # Choose 'ollama' or 'gemini' (default: ollama)
+OLLAMA_MODEL="llama3.2:3b" # Local model to use
+OLLAMA_HOST="http://localhost:11434"
+GEMINI_API_KEY="your_api_key_here" # If provided while using Ollama, enables Auto-Fallback
+```
+
+#### Option A: Local Ollama (Default)
 Ensure you have the required model pulled and running locally:
 ```bash
 ollama run llama3.2:3b
 ```
+
+#### Option B: Google Gemini API
+Set `LLM_PROVIDER=gemini` and export your `GEMINI_API_KEY`. No local server is required.
 
 ### 3. Install Dependencies
 Clone the repository and install the strict production requirements:

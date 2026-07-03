@@ -3,14 +3,20 @@ import pandas as pd
 from datetime import datetime
 import io
 
-from config import APP_TITLE, OLLAMA_MODEL
+from config import APP_TITLE, LLM_PROVIDER, OLLAMA_MODEL, GEMINI_API_KEY
 from core.intent import detect_intent, extract_entities
 from core.analytics import run_analytics, get_db_stats, get_dashboard_charts_data, get_sales_analytics, get_promotion_analytics, get_inventory_analytics, get_product_analytics, get_regional_analytics, get_trend_analytics, get_base_sales_df
 from core.prompts import build_prompt
 from core.llm import generate_business_explanation
 from core.charts import generate_chart, create_bar_chart, create_line_chart, create_donut_chart, apply_enterprise_theme
 from utils.validator import is_valid_query
-from utils.pdf_generator import generate_enterprise_pdf
+from utils.pdf_generator import create_executive_pdf
+
+if "LLM_PROVIDER" not in st.session_state:
+    st.session_state.LLM_PROVIDER = LLM_PROVIDER
+
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
 
 # ----------------------------------------------------
 # 1. PAGE CONFIGURATION & CSS (Strictly Native)
@@ -255,32 +261,42 @@ def p2_chat():
                 latest_kpis = [("User Query", msg['content'])] # For export context
         else:
             with st.chat_message("assistant"):
-                p = msg.get("parsed", parse_llm_markdown(msg["content"]))
-                st.subheader("AI Analysis Result")
-                st.caption(f"Confidence: {p['confidence']}")
-                
-                st.write(f"**{p['summary']}**")
-                latest_insights = [f"Summary: {p['summary']}"]
-                
-                if p["findings"]:
-                    for finding in p["findings"]:
-                        st.write(f"- {finding}")
-                        latest_insights.append(finding)
-                        
-                if "chart" in msg and msg["chart"]: 
-                    safe_plotly(msg["chart"])
-                    latest_charts = [msg["chart"]]
-                
-                if "data" in msg and msg["data"] is not None and not msg["data"].empty:
-                    with st.expander("📊 View Data Table & SQL", expanded=False):
-                        safe_dataframe(msg["data"])
-                        st.code(msg.get("sql", "SELECT * FROM data;"), language="sql")
-                        
-                if p["action"]:
-                    st.success(f"**🎯 Recommended Action:**\n\n{p['action']}")
-                    latest_insights.append(f"RECOMMENDATION: {p['action']}")
+                if msg["content"] == "__OLLAMA_UNAVAILABLE__":
+                    st.error("Ollama server unavailable.")
+                    if GEMINI_API_KEY:
+                        if st.button("Switch to Gemini"):
+                            st.session_state.LLM_PROVIDER = "gemini"
+                            st.session_state.chat_history.pop()
+                            st.rerun()
+                    else:
+                        st.info("Set GEMINI_API_KEY in environment to enable Gemini fallback.")
+                else:
+                    p = msg.get("parsed", parse_llm_markdown(msg["content"]))
+                    st.subheader("AI Analysis Result")
+                    st.caption(f"Confidence: {p['confidence']}")
                     
-                st.caption(f"Data Sources: {p['sources']}")
+                    st.write(f"**{p['summary']}**")
+                    latest_insights = [f"Summary: {p['summary']}"]
+                    
+                    if p["findings"]:
+                        for finding in p["findings"]:
+                            st.write(f"- {finding}")
+                            latest_insights.append(finding)
+                            
+                    if "chart" in msg and msg["chart"]: 
+                        safe_plotly(msg["chart"])
+                        latest_charts = [msg["chart"]]
+                    
+                    if "data" in msg and msg["data"] is not None and not msg["data"].empty:
+                        with st.expander("📊 View Data Table & SQL", expanded=False):
+                            safe_dataframe(msg["data"])
+                            st.code(msg.get("sql", "SELECT * FROM data;"), language="sql")
+                            
+                    if p["action"]:
+                        st.success(f"**🎯 Recommended Action:**\n\n{p['action']}")
+                        latest_insights.append(f"RECOMMENDATION: {p['action']}")
+                        
+                    st.caption(f"Data Sources: {p['sources']}")
 
     finalize_header(header_placeholder, "Analytics Chat", "Ask complex business questions and receive data-grounded AI insights.", latest_kpis, latest_insights, latest_charts)
 
@@ -311,7 +327,9 @@ def p2_chat():
             else:
                 fig = generate_chart(intent, analytics_result["data"])
                 prompt = build_prompt(q, analytics_result)
-                explanation = generate_business_explanation(prompt)
+                
+                provider = st.session_state.get("LLM_PROVIDER", LLM_PROVIDER)
+                explanation = generate_business_explanation(prompt, provider_override=provider)
                 
                 st.session_state.chat_history.append({
                     "role": "assistant", 
@@ -518,8 +536,12 @@ def p10_system():
             
             st.write("---")
             col_c, col_d = st.columns(2)
-            with col_c: st.write(f"**Ollama Engine ({OLLAMA_MODEL})**")
-            with col_d: st.success("● Connected (Local)")
+            with col_c: st.write("**AI Engine**")
+            with col_d:
+                if st.session_state.LLM_PROVIDER == "gemini":
+                    st.success("● Gemini API (Online)" if GEMINI_API_KEY else "🔴 Gemini API (Missing Key)")
+                else:
+                    st.success(f"● Ollama ({OLLAMA_MODEL})")
 
     with c2:
         with st.container(border=True):
@@ -541,7 +563,10 @@ def p11_settings():
         
         st.write("---")
         st.subheader("🤖 AI Configuration")
-        st.write(f"Model: **{OLLAMA_MODEL}** via Ollama")
+        if st.session_state.LLM_PROVIDER == "gemini":
+            st.write("Provider: **Google Gemini API** (gemini-1.5-pro)")
+        else:
+            st.write(f"Provider: **Ollama** (Model: {OLLAMA_MODEL})")
         st.write("Temperature: **0.2** (Optimized for strictly analytical reasoning and zero hallucination)")
         
         st.write("---")

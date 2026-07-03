@@ -9,9 +9,12 @@
   [![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B.svg)](https://streamlit.io)
   [![Ollama](https://img.shields.io/badge/LLM-Ollama-black.svg)](https://ollama.com)
   [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 </div>
 
 <br/>
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://beverageiq-ai-f7dy57vygxqheusz8t82ow.streamlit.app/)
 
 BeverageIQ is an enterprise-grade, **AI-powered Business Analytics Assistant** designed exclusively for the Fast-Moving Consumer Goods (FMCG) industry. It enables business executives to ask natural language questions about sales, promotions, inventory, and stores, instantly returning mathematically grounded analytics, interactive Plotly visualizations, and beautifully rendered Deloitte-style PDF executive reports.
 

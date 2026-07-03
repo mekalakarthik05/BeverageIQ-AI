@@ -1,6 +1,4 @@
 <div align="center">
-  <img src="assets/social_preview.png" alt="BeverageIQ Social Preview" width="800"/>
-  <br/><br/>
   <img src="assets/logo.png" alt="BeverageIQ Logo" width="200"/>
   
   # BeverageIQ 🥤

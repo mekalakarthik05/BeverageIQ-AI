@@ -7,7 +7,7 @@ DATA_DIR = BASE_DIR / "data"
 DATABASE_PATH = BASE_DIR / "data" / "database.db"
 
 # Model Configuration
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama").lower()
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2:3b")
 OLLAMA_API_URL = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")

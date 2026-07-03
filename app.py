@@ -10,7 +10,7 @@ from core.prompts import build_prompt
 from core.llm import generate_business_explanation
 from core.charts import generate_chart, create_bar_chart, create_line_chart, create_donut_chart, apply_enterprise_theme
 from utils.validator import is_valid_query
-from utils.pdf_generator import create_executive_pdf
+from utils.pdf_generator import generate_enterprise_pdf
 
 if "LLM_PROVIDER" not in st.session_state:
     st.session_state.LLM_PROVIDER = LLM_PROVIDER
